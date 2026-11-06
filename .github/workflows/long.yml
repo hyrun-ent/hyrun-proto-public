@@ -1,0 +1,13 @@
+name: long
+on:
+  workflow_dispatch:
+    inputs:
+      minutes:
+        description: minutes to sleep (busy runner for E6, cancel tests for E4)
+        default: "10"
+jobs:
+  long:
+    runs-on: hyrun-proto
+    timeout-minutes: 30
+    steps:
+      - run: echo "runner=$RUNNER_NAME"; sleep $(( ${{ inputs.minutes }} * 60 ))

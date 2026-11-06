@@ -1,0 +1,9 @@
+name: smoke
+on: workflow_dispatch
+jobs:
+  smoke:
+    runs-on: hyrun-proto
+    steps:
+      - run: |
+          echo "runner=$RUNNER_NAME run_id=$GITHUB_RUN_ID attempt=$GITHUB_RUN_ATTEMPT job=$GITHUB_JOB"
+          uname -a; nproc; free -m

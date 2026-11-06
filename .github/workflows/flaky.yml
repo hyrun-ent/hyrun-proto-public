@@ -1,0 +1,13 @@
+name: flaky
+on: workflow_dispatch
+jobs:
+  ok:
+    runs-on: hyrun-proto
+    steps:
+      - run: echo fine
+  fails-first-attempt:
+    runs-on: hyrun-proto
+    steps:
+      - run: |
+          echo "attempt=$GITHUB_RUN_ATTEMPT"
+          if [ "$GITHUB_RUN_ATTEMPT" = "1" ]; then exit 1; fi

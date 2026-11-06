@@ -1,0 +1,16 @@
+name: matrix
+on:
+  workflow_dispatch:
+    inputs:
+      sleep:
+        description: seconds each job sleeps
+        default: "30"
+jobs:
+  m:
+    runs-on: hyrun-proto
+    strategy:
+      fail-fast: false
+      matrix:
+        i: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    steps:
+      - run: echo "i=${{ matrix.i }} runner=$RUNNER_NAME"; sleep ${{ inputs.sleep }}
